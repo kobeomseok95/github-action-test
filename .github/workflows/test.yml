@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: print branch name if dev
-        if: ${{ github.ref_name }} == 'dev'
+        if: github.ref_name == 'dev'
         run: echo dev
       - name: print branch name if main
-        if: ${{ github.ref_name }} == 'main'
+        if: github.ref_name == 'main'
         run: echo prod
