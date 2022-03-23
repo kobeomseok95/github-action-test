@@ -13,6 +13,10 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
-      - name: print branch name
+      - name: print branch name if dev
         if: ${{ github.ref_name }} == 'dev'
         run: echo dev
+
+      - name: print branch name if main
+        if: ${{ github.ref_name }} == 'main'
+        run: echo prod
