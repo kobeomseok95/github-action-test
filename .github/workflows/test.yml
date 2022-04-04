@@ -9,9 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: print branch name if dev
-        if: github.ref_name == 'dev'
-        run: echo dev
-      - name: print branch name if main
-        if: github.ref_name == 'main'
-        run: echo prod
+      - name: set environment variables
+        run: |
+          echo "BRANCH_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
+      - name: print branch name
+        run: echo "${{ env.BRANCH_NAME }}"
